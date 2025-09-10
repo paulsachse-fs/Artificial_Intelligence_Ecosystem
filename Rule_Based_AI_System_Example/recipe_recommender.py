@@ -13,7 +13,8 @@ recipes = {
     "Ramen": ["noodles", "broth", "vegetables", "hard boiled egg", "soy sauce"],
     "Salsa": ["tomatoes", "garlic", "onion", "jalepenos", "cilantro"],
     "Chef's Salad": ["lettuce","tomatoes", "ham", "turkey", "hard boiled egg", "salad dressing"],
-    "Grilled Cheese Sandiwich": ['bread', 'cheese', 'mayonaise', 'pickles']
+    "Grilled Cheese Sandiwich": ['bread', 'cheese', 'mayonaise', 'pickles'],
+    "Bread": ['flour', 'yeast', 'oil']
 }
 
 # Function to recommend recipes
