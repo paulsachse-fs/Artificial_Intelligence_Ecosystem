@@ -1,0 +1,7 @@
+# Paul Sachse
+# requirements.txt for Troubleshooting Helper
+# No external dependencies required
+python>=3.8
+
+# To run the program from the terminal:
+#   python3 troubleshooting_helper.py

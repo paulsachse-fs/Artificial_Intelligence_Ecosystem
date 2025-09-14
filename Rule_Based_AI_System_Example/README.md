@@ -1,52 +1,57 @@
+# Use of
 # Sample submission for the Building a Rule-Based AI System in Python project.
-
+# by Paul Sachse
 ---
-
 ## Part 1: Initial Project Ideas
 
-### 1. Project Idea 1: Recipe Recommender
-- **Description:** A system that recommends recipes based on ingredients the user has on hand. The user enters ingredients, and the system matches them to recipes using predefined rules.  
+### 1. Project Idea 1: Troubleshooting Assistant
+- **Description:** A system that can provide basic technology troubleshooting guidance.
 - **Rule-Based Approach:**  
-  - The system checks for exact matches and partial matches with the ingredients required for recipes in a dataset.  
-  - Missing ingredients are suggested for partial matches.
+  - The system uses rules to guide a user through troubleshooting
+  - For example, a user could say "no power" or "no internet" and recieve general guidance on next steps to take to resolve the issue.
 
-### 2. Project Idea 2: Simple Chatbot
-- **Description:** A chatbot that responds to user inputs with predefined answers. The chatbot simulates a conversation by identifying keywords and phrases in user inputs.  
+### 2. Project Idea 2: Fortune Teller
+- **Description:** A system that makes predictions about future outcomes based on input about your past.
 - **Rule-Based Approach:**  
-  - Responses are based on keywords such as "hello," "help," or "bye."  
-  - For example, if the user says "hello," the system responds with "Hi there! How can I assist you?"
+  - The system uses rules to inquire about an individual's history and provide feedback about future possiblities. 
+  - For example, if someone travels often, there is a higher chance they could meet an interesting person in another location.
 
-### 3. Project Idea 3: Travel Packing List Generator
-- **Description:** A system that generates a packing list based on the user’s destination, climate, and trip duration.  
+### 3. Project Idea 3: Emergency Assistant
+- **Description:** A system that can quickly provide proper contact information or other information based on emergency context.
 - **Rule-Based Approach:**  
-  - The system uses rules to recommend items.  
-  - For example, if the destination is "beach" and the climate is "hot," the system suggests sunscreen, swimsuits, and sunglasses.
+  - The system uses rules to learn about the emergency an individual is facing and provide the most likely relevant information. 
+  - For example, a fire would result immediate evacuation, where a hurriance may suggest preperation supplies, or a robbery would advise to call 911 right away.
 
-### **Chosen Idea:** Recipe Recommender  
-**Justification:** I chose this project because it is practical and applicable to real-life scenarios. It allows me to work with datasets, apply conditional logic, and create a system that provides meaningful recommendations based on user input.
+### **Chosen Idea:** Troubleshooting Assistant
+**Justification:** I chose the troubleshooting assistant, first and foremost, because I am an expert in troubleshooting technology. This means that I can ensure the system is outputting good data for the user. Furthermore, this is a practical AI application that large companies are implementing at scale today.
 
 ---
 
 ## Part 2: Rules/Logic for the Chosen System
 
-The **Recipe Recommender** system will follow these rules:
+The **Troubleshooting Assistant** system will follow these rules:
 
-1. **Exact Match Rule:**  
-   - **IF** all ingredients in a recipe are found in the user’s ingredient list → **Recommend the recipe.**
+1. **Issue Identification Rule:**  
+   - **IF** the user’s description contains exact keywords (e.g., “no internet”, “no power”) → **Match the problem to the correct troubleshooting category.**
+   - **ELSEIF** the text contains related terms (e.g., “wifi down”, “screen black”) → **Map to the closest matching category using keyword heuristics.**
+   - **ELSE** → **Notify the user that no rule exists for their issue.**
 
-2. **Partial Match Rule:**  
-   - **IF** 75% or more of the ingredients in a recipe match the user’s ingredient list →  
-     - **Recommend the recipe.**  
-     - **Suggest the missing ingredients.**
+2. **Step-by-Step Assistance Rule:**  
+   - **FOR EACH** step in the matched category →  
+     - **Present the action to the user.**  
+     - **Ask: “Did that fix it?”**
+        - **IF** user responds yes → **Stop and mark issue as resolved.**
+        - **IF** user responds no → **Proceed to the next step.**
 
-3. **Common Ingredients Rule:**  
-   - Ingredients like salt, pepper, and water are considered optional and will not be counted as missing.
+3. **Resolution Rule:**  
+   - **IF** any step resolves the problem → **Confirm resolution with a success message**
 
-4. **No Match Rule:**  
-   - **IF** no recipes match → **Suggest adding more ingredients** for better recommendations.
+4. **Escalation Rule:**  
+   - **IF** all troubleshooting steps fail → **Provide escalation advice**, e.g., “Seek service, contact ISP, or update drivers.”
 
-5. **Low Ingredient Rule:**  
-   - **IF** fewer than three ingredients are provided → **Notify the user** and suggest adding more ingredients.
+5. **Interactive Loop Rule:**  
+   - Continue asking for new problems until the user types “exit”.
+   - **IF** user enters “exit” → End session with a goodbye message.
 
 ---
 
@@ -54,39 +59,48 @@ The **Recipe Recommender** system will follow these rules:
 
 Sample input and output: 
 
-Enter your ingredients (comma-separated): chicken, rice, soy sauce
-You are close to making Chicken Fried Rice! Missing: garlic.
+Describe the problem (e.g., 'no internet'): my computer wont turn on
 
-Enter your ingredients (comma-separated): garlic, soy sauce
-No recipes match. Try adding more ingredients.
+=== NO POWER ===
+• Try a different outlet/power strip; reseat the power cable firmly.
+Did that fix it? (yes/no) n
+• Desktop: ensure PSU rocker switch is ON (|). Laptop: plug in a known-good charger.
+Did that fix it? (yes/no) n
+• Hold power button 15–20 seconds, release, then press again.
+Did that fix it? (yes/no) y
+✅ Resolved!
 
-Enter your ingredients (comma-separated): pasta, tomatoes, garlic, olive oil
-You can make Spaghetti Pomodoro!
+
+Describe the problem (e.g., 'no internet'): my internet wont work
+
+=== NO INTERNET ===
+• Make sure Airplane Mode and any VPN are OFF, and Wi-Fi is ON.
+Did that fix it? (yes/no) y
+✅ Resolved!
+
+
+Describe the problem (e.g., 'no internet'): my computer is slow
+
+=== SLOW ===
+• Close unused apps/tabs; save work and restart.
+Did that fix it? (yes/no) n
+• Ensure >10% free disk space; remove large/temp files.
+Did that fix it? (yes/no) n
+• Use Task Manager/Activity Monitor to end runaway processes.
+Did that fix it? (yes/no) n
+• Disable heavy startup apps; apply OS updates.
+Did that fix it? (yes/no) n
+➡️ Still not fixed. Needs deeper support/repair.
 
 ---
 
 ## Part 4: Reflection
 
 ### Project Overview:
-This project involved designing a practical, rule-based system to recommend recipes based on user inputs. The system uses logical conditions (e.g., exact and partial matches) to evaluate user-provided ingredients against recipes in the dataset.
+For this project, I designed a rule-based system to assist individuals with basic technology troubleshooting. The system uses conditional decision rules to guide users step-by-step toward possible solutions. Once a user enters their issue in natural language, keywords and heuristic matches map their query to a troubleshooting category. From there, the system can walk the user through a set of diagnostic steps. After each step, the system checks with the user to see if the issue is resolved. If the issue is resolved, the system ends the interaction and returns to the beginning of the interaction loop. If the issue is not resolved, the system will proceed through additional troubleshooting steps. Eventually, if no resolution is found, the system will advise the user to reach out to the appropriate support channels. This system will continue to run in a loop, asking the user to describe a new problem, until the user types “exit”.
 
 ### Challenges:
-- **Handling Partial Matches:**  
-  Deciding on a threshold (75%) that balances flexibility with accuracy was challenging.
-- **Common Ingredients:**  
-  Ensuring common ingredients like salt and water don’t skew the results. I resolved this by excluding them from the missing ingredient list.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- **Handling Many Possible Inquiries:**  
+  Troubleshooting technology can come with a lot of possible user issues. This program started out with only a couple of issues it could identify, but clearly needed to have more data while it was missing troubleshooting for common issues like email and webcam issues. Once many more possible issues were added, the system became much more useful, and may actually be useful to a less technical individual. 
+- **Natural Language Use:**  
+  Generally, users looking for troubleshooting assistance may not have a highly technical vocabulary. That’s why an understanding of natural language had to be added to this system, which can then filter troubleshooting down to a specific workflow. Initially, a prompt like “my computer wont turn on” would return no response. Now, the semantically improved system can identify that as a “no power” issue and guide the user through appropriate steps.
