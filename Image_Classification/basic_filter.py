@@ -19,7 +19,7 @@ def apply_blur_filter(image_path, output_path="blurred_image.png"):
     except Exception as e:
         print(f"Error processing image: {e}")
 
-# sepia helper
+# sepia helper, defines color adjustments
 def apply_sepia(img):
     gray = img.convert("L")
     sepia = Image.merge("RGB", (
