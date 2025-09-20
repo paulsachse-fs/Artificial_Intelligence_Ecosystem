@@ -5,16 +5,19 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input, decode_
 from tensorflow.keras.preprocessing import image
 import numpy as np
 
+# load model
 model = MobileNetV2(weights="imagenet")
 
 def classify_image(image_path):
-    try:
+    try: # load pictures and process for analysis
         img = image.load_img(image_path, target_size=(224, 224))
         img_array = image.img_to_array(img)
         img_array = preprocess_input(img_array)
         img_array = np.expand_dims(img_array, axis=0)
 
+        # get predictions from model
         predictions = model.predict(img_array)
+        # convert results to output
         decoded_predictions = decode_predictions(predictions, top=3)[0]
 
         print("\nTop-3 Predictions for", image_path)
