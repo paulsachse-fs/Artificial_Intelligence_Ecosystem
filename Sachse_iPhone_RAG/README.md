@@ -1,4 +1,4 @@
-# Paul Sachse - Retrieval Augmented Generation System
+# Paul Sachse - Retrieval Augmented Generation System Reflection Report
 
 ## Selected Document: Wikipedia page of the iPhone
 I downloaded the iPhone Wikipedia page as a pdf and processed it as a document rather than a webpage. This was due to an error I received while attempting to use the automated system to access Wikipedia's site. This Wikipedia page contains general information about the iPhone and its many releases over the years. The page contains details about the device's hardware including models, internal components, and physical design. The source also goes on to talk about the iPhone's software and services including iOS and the App Store. This resource also includes company information about Apple and the iPhone such as retail data, marketing, and history of the device. 
