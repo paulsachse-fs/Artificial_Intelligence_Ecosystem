@@ -26,8 +26,8 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 # --- RAG Parameters ---
 
 # Text splitting parameters
-chunk_size = 100 #500 initially
-chunk_overlap = 50
+chunk_size = 150 #500 initially
+chunk_overlap = 100
 
 # Embedding model (bi-encoder)
 model_name = "sentence-transformers/all-distilroberta-v1"
